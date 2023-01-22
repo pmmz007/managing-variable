@@ -13,7 +13,7 @@
       - "{{ python_pkg }}"
      state: latest
   
-  - name: loop test
+  - name: loop with service started and enabled
     service:
      name: "{{ item }}"
      state: started
@@ -21,4 +21,15 @@
     loop:
      - "{{ web_pkg }}"
      - "{{ firewall_pkg }}"
+  - name: http web content 
+    copy:
+     content: Web02 server hosted on httpd 
+     dest: "{{ web_content }}"
 
+  - name: open "{{ http }}" service on "{{ firewall_pkg }}"
+    firewalld:
+     service: "{{ http }}"
+     permanent: yes
+     immediate: yes
+     state: enabled
+     

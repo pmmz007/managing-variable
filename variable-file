@@ -4,3 +4,4 @@ web_service: httpd
 firewall_service: firewalld
 python_pkg: python3-PyMySQL
 rule: http
+web_content: /var/www/html/index.html

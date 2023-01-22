@@ -1,0 +1,13 @@
+---
+- name: check URL is working or not
+  hosts: localhost
+  become: false
+  tasks:
+  - name: get url testing
+    uri:
+     url: http://web02
+     status_code: 200
+    register: output_url
+  - name: debugg for outup
+    debug:
+     var: output_url
