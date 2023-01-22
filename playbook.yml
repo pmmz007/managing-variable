@@ -12,4 +12,17 @@
       - "{{ firewall_pkg }}"
       - "{{ python_pkg }}"
      state: latest
+     
+  - name: make sure "{{ web_pkg }}" is started and enabled service
+    service: 
+     name: "{{ web_pkg }}"
+     state: started
+     enabled: yes
+
+
+  - name: make sure "{{ firewall_pkg }}" is started and enabled service
+    service: 
+     name: "{{ firewall_pkg }}"
+     state: started
+     enabled: yes
 
