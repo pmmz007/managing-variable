@@ -12,17 +12,13 @@
       - "{{ firewall_pkg }}"
       - "{{ python_pkg }}"
      state: latest
-     
-  - name: make sure "{{ web_pkg }}" is started and enabled service
-    service: 
-     name: "{{ web_pkg }}"
+  
+  - name: loop test
+    service:
+     name: "{{ item }}"
      state: started
      enabled: yes
-
-
-  - name: make sure "{{ firewall_pkg }}" is started and enabled service
-    service: 
-     name: "{{ firewall_pkg }}"
-     state: started
-     enabled: yes
+    loop:
+     - "{{ web_pkg }}"
+     - "{{ firewall_pkg }}"
 
